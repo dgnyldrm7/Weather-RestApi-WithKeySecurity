@@ -1,0 +1,6 @@
+@Random_Weather_RestApi_HostAddress = http://localhost:5140
+
+GET {{Random_Weather_RestApi_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###
