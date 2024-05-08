@@ -1,22 +1,17 @@
 using Microsoft.AspNetCore.Mvc;
+using Random_Weather_RestApi.Authentication;
 
 namespace Random_Weather_RestApi.Controllers
 {
     [ApiController]
     [Route("[controller]")]
+    [ServiceFilter(typeof(ApiKeyAuthFilter))]
     public class WeatherForecastController : ControllerBase
     {
         private static readonly string[] Summaries = new[]
         {
             "Freezing", "Bracing", "Chilly", "Cool", "Mild", "Warm", "Balmy", "Hot", "Sweltering", "Scorching"
         };
-
-        private readonly ILogger<WeatherForecastController> _logger;
-
-        public WeatherForecastController(ILogger<WeatherForecastController> logger)
-        {
-            _logger = logger;
-        }
 
         [HttpGet(Name = "GetWeatherForecast")]
         public IEnumerable<WeatherForecast> Get()
@@ -29,5 +24,9 @@ namespace Random_Weather_RestApi.Controllers
             })
             .ToArray();
         }
+
+
+
+
     }
 }
